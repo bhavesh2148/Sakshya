@@ -139,14 +139,14 @@ export default function AttackLabPage() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
-            <div className="flex items-center space-x-2 text-indigo-400 text-xs font-bold uppercase tracking-wider">
+            <div className="flex items-center space-x-2 text-[#1F3A5F] text-xs font-bold uppercase tracking-wider">
               <ShieldAlert className="w-4 h-4" />
               <span>Adversarial Testing & Forensic Verification Bench</span>
             </div>
-            <h1 className="text-3xl font-extrabold text-white tracking-tight">
+            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
               Forensic Attack Lab & Detector Benchmark
             </h1>
-            <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
+            <p className="text-slate-600 text-sm max-w-2xl leading-relaxed">
               Programmatically inject synthetic tampering (font swaps, seal cloning, EXIF forgery, metadata stripping)
               to stress-test and continuously benchmark the automated forensic detectors.
             </p>
@@ -156,10 +156,10 @@ export default function AttackLabPage() {
         {/* 2-Column Lab Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column (5 Cols): Synthetic Attack Generator */}
-          <div className="lg:col-span-5 bg-slate-900/90 border border-slate-800 rounded-3xl p-6 space-y-5">
-            <div className="border-b border-slate-800 pb-3">
-              <h3 className="font-extrabold text-base text-white">Synthetic Tampering Attack Suite</h3>
-              <p className="text-xs text-slate-400">Select an adversarial perturbation to inject into a valid certificate</p>
+          <div className="lg:col-span-5 bg-white/90 border border-slate-200 rounded-lg p-6 space-y-5">
+            <div className="border-b border-slate-200 pb-3">
+              <h3 className="font-extrabold text-base text-slate-900">Synthetic Tampering Attack Suite</h3>
+              <p className="text-xs text-slate-600">Select an adversarial perturbation to inject into a valid certificate</p>
             </div>
 
             <div className="space-y-3">
@@ -169,20 +169,20 @@ export default function AttackLabPage() {
                   <div
                     key={atk.id}
                     onClick={() => setSelectedAttack(atk.id)}
-                    className={`p-4 rounded-2xl border transition-all cursor-pointer space-y-1.5 ${
+                    className={`p-4 rounded-lg border transition-all cursor-pointer space-y-1.5 ${
                       isSelected
-                        ? "bg-indigo-600/15 border-indigo-500 shadow-lg shadow-indigo-500/10 scale-[1.01]"
-                        : "bg-slate-950/60 border-slate-800 hover:border-slate-700"
+                        ? "bg-[#1F3A5F]/10 border-[#1F3A5F] shadow-none scale-[1.01]"
+                        : "bg-slate-50/60 border-slate-200 hover:border-slate-300"
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-xs text-white">{atk.name}</span>
-                      <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 font-bold border border-rose-500/30">
+                      <span className="font-bold text-xs text-slate-900">{atk.name}</span>
+                      <span className="text-[9px] font-mono px-2 py-0.5 rounded bg-red-50 text-red-700 font-bold border border-red-200">
                         {atk.severity}
                       </span>
                     </div>
-                    <p className="text-[11px] text-slate-400 leading-relaxed">{atk.desc}</p>
-                    <div className="text-[10px] text-indigo-400 font-mono pt-1">
+                    <p className="text-[11px] text-slate-600 leading-relaxed">{atk.desc}</p>
+                    <div className="text-[10px] text-[#1F3A5F] font-mono pt-1">
                       Target Detector: {atk.targetEngine}
                     </div>
                   </div>
@@ -193,7 +193,7 @@ export default function AttackLabPage() {
             <button
               onClick={handleRunSyntheticAttack}
               disabled={runningBenchmark}
-              className="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-indigo-600/20 transition disabled:opacity-50"
+              className="w-full py-3 bg-[#1F3A5F] hover:bg-[#162B47] text-white rounded-lg text-xs font-bold shadow-none transition disabled:opacity-50"
             >
               {runningBenchmark ? "Injecting Attack & Running Detectors..." : "Execute Synthetic Benchmark"}
             </button>
@@ -203,81 +203,81 @@ export default function AttackLabPage() {
           <div className="lg:col-span-7 space-y-6">
             {/* Synthetic Benchmark Result Card */}
             {benchmarkResult && (
-              <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div className="bg-white/90 border border-slate-200 rounded-lg p-6 space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-200 pb-3">
                   <div className="flex items-center space-x-2">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                    <h3 className="font-extrabold text-sm text-white">Detector Benchmark Result</h3>
+                    <CheckCircle2 className="w-5 h-5 text-emerald-700" />
+                    <h3 className="font-extrabold text-sm text-slate-900">Detector Benchmark Result</h3>
                   </div>
-                  <span className="text-xs font-bold text-emerald-400 bg-emerald-500/20 px-2.5 py-1 rounded-full border border-emerald-500/30">
+                  <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
                     {benchmarkResult.detection_status}
                   </span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 text-xs">
-                  <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
-                    <span className="text-slate-400 text-[11px]">Simulated Attack:</span>
-                    <div className="font-bold text-white">{benchmarkResult.attack_name}</div>
-                    <div className="text-slate-400 text-[11px] font-mono">{benchmarkResult.injection}</div>
+                  <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
+                    <span className="text-slate-600 text-[11px]">Simulated Attack:</span>
+                    <div className="font-bold text-slate-900">{benchmarkResult.attack_name}</div>
+                    <div className="text-slate-600 text-[11px] font-mono">{benchmarkResult.injection}</div>
                   </div>
 
-                  <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1">
-                    <span className="text-slate-400 text-[11px]">Evaluated Detector:</span>
-                    <div className="font-bold text-indigo-300">{benchmarkResult.detector}</div>
-                    <div className="text-rose-400 text-[11px] font-bold">
+                  <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
+                    <span className="text-slate-600 text-[11px]">Evaluated Detector:</span>
+                    <div className="font-bold text-[#1F3A5F]">{benchmarkResult.detector}</div>
+                    <div className="text-red-700 text-[11px] font-bold">
                       Fraud Confidence: {Math.round(benchmarkResult.fraud_score * 100)}%
                     </div>
                   </div>
                 </div>
 
-                <div className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 text-xs text-slate-300">
-                  <span className="font-semibold text-white">Proof of Detection: </span>
+                <div className="p-3.5 bg-slate-50 rounded-lg border border-slate-200 text-xs text-slate-700">
+                  <span className="font-semibold text-slate-900">Proof of Detection: </span>
                   {benchmarkResult.explanation}
                 </div>
               </div>
             )}
 
             {/* Live Upload Testing Section */}
-            <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 space-y-4">
-              <div className="border-b border-slate-800 pb-3">
-                <h3 className="font-extrabold text-base text-white">Live Certificate Forensic Sandbox</h3>
-                <p className="text-xs text-slate-400">
+            <div className="bg-white/90 border border-slate-200 rounded-lg p-6 space-y-4">
+              <div className="border-b border-slate-200 pb-3">
+                <h3 className="font-extrabold text-base text-slate-900">Live Certificate Forensic Sandbox</h3>
+                <p className="text-xs text-slate-600">
                   Upload any physical PDF scan or municipal certificate from your computer to test the detector in real time.
                 </p>
               </div>
 
-              <label className="border-2 border-dashed border-slate-700 hover:border-indigo-500 rounded-2xl p-8 text-center space-y-3 transition cursor-pointer bg-slate-950/40 block">
+              <label className="border-2 border-dashed border-slate-300 hover:border-[#1F3A5F] rounded-lg p-8 text-center space-y-3 transition cursor-pointer bg-slate-50/40 block">
                 <input
                   type="file"
                   className="hidden"
                   accept=".pdf,.png,.jpg,.jpeg"
                   onChange={handleFileUpload}
                 />
-                <UploadCloud className={`w-10 h-10 mx-auto ${liveUploadLoading ? "text-indigo-400 animate-bounce" : "text-indigo-400"}`} />
+                <UploadCloud className={`w-10 h-10 mx-auto ${liveUploadLoading ? "text-[#1F3A5F] animate-bounce" : "text-[#1F3A5F]"}`} />
                 <div>
-                  <span className="text-sm font-semibold text-white">
+                  <span className="text-sm font-semibold text-slate-900">
                     {liveUploadLoading ? "Parsing PDF streams & computing ELA..." : "Select PDF or Image to Stress-Test"}
                   </span>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-slate-600 mt-1">
                     Accepts Land Title Deeds, Fire NOCs, Building Approvals
                   </p>
                 </div>
               </label>
 
               {liveUploadReport && (
-                <div className="p-4 bg-slate-950 rounded-2xl border border-indigo-500/40 space-y-3 text-xs">
-                  <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                    <span className="font-bold text-white">Analysis: {liveUploadReport.file_name}</span>
-                    <span className="font-bold text-rose-400 bg-rose-500/20 px-2 py-0.5 rounded">
+                <div className="p-4 bg-slate-50 rounded-lg border border-[#1F3A5F]/30 space-y-3 text-xs">
+                  <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+                    <span className="font-bold text-slate-900">Analysis: {liveUploadReport.file_name}</span>
+                    <span className="font-bold text-red-700 bg-red-50 px-2 py-0.5 rounded">
                       {liveUploadReport.verdict} ({Math.round(liveUploadReport.overall_fraud_score * 100)}%)
                     </span>
                   </div>
 
                   <div className="space-y-2">
                     {liveUploadReport.findings?.map((f: any, idx: number) => (
-                      <div key={idx} className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px] space-y-1">
-                        <div className="font-semibold text-indigo-300">{f.title}</div>
-                        <p className="text-slate-300">{f.description}</p>
+                      <div key={idx} className="p-2.5 bg-white rounded-lg border border-slate-200 text-[11px] space-y-1">
+                        <div className="font-semibold text-[#1F3A5F]">{f.title}</div>
+                        <p className="text-slate-700">{f.description}</p>
                         {f.visual_evidence_b64 && (
                           <img src={f.visual_evidence_b64} alt="ELA Heatmap" className="w-full max-h-40 object-contain rounded mt-1 bg-black" />
                         )}

@@ -54,32 +54,32 @@ export default function TimelineDAGPage() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
-            <div className="flex items-center space-x-2 text-indigo-400 text-xs font-bold uppercase tracking-wider">
+            <div className="flex items-center space-x-2 text-[#1F3A5F] text-xs font-bold uppercase tracking-wider">
               <GitBranch className="w-4 h-4" />
               <span>Allen's Temporal Interval Algebra & Consistency DAG</span>
             </div>
-            <h1 className="text-3xl font-extrabold text-white tracking-tight">
+            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
               Timeline Impossibility Engine
             </h1>
-            <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
+            <p className="text-slate-600 text-sm max-w-2xl leading-relaxed">
               Detects retro-dated approvals, physically impossible inspection sequences, and premature senior faculty
               appointments via chronological interval algebra.
             </p>
           </div>
 
-          <div className="flex items-center space-x-2 bg-slate-900 p-1.5 rounded-2xl border border-slate-800 text-xs">
+          <div className="flex items-center space-x-2 bg-white p-1.5 rounded-lg border border-slate-200 text-xs">
             <button
               onClick={() => setActiveTab("fraud")}
-              className={`px-4 py-2 rounded-xl font-bold transition ${
-                activeTab === "fraud" ? "bg-rose-600/20 text-rose-300 border border-rose-500/40" : "text-slate-400 hover:text-white"
+              className={`px-4 py-2 rounded-lg font-bold transition ${
+                activeTab === "fraud" ? "bg-red-50 text-red-700 border border-red-200" : "text-slate-600 hover:text-slate-900"
               }`}
             >
               Tampered Application DAG (3 Paradoxes)
             </button>
             <button
               onClick={() => setActiveTab("genuine")}
-              className={`px-4 py-2 rounded-xl font-bold transition ${
-                activeTab === "genuine" ? "bg-emerald-600/20 text-emerald-300 border border-emerald-500/40" : "text-slate-400 hover:text-white"
+              className={`px-4 py-2 rounded-lg font-bold transition ${
+                activeTab === "genuine" ? "bg-emerald-50 text-emerald-700 border border-emerald-200" : "text-slate-600 hover:text-slate-900"
               }`}
             >
               Genuine Compliant DAG (0 Anomalies)
@@ -89,13 +89,13 @@ export default function TimelineDAGPage() {
 
         {/* Status Callout */}
         {activeTab === "fraud" ? (
-          <div className="p-5 rounded-2xl bg-rose-950/20 border border-rose-500/40 flex items-start space-x-4">
-            <AlertTriangle className="w-6 h-6 text-rose-400 shrink-0 mt-0.5" />
+          <div className="p-5 rounded-lg bg-red-50 border border-red-200 flex items-start space-x-4">
+            <AlertTriangle className="w-6 h-6 text-red-700 shrink-0 mt-0.5" />
             <div className="space-y-1 text-xs">
-              <h3 className="font-bold text-sm text-rose-200">
+              <h3 className="font-bold text-sm text-red-700">
                 CRITICAL CHRONOLOGICAL INVERSION DETECTED (DAG Cycle & Interval Violation)
               </h3>
-              <p className="text-slate-300">
+              <p className="text-slate-700">
                 The temporal constraint graph evaluated 8 milestones. <b>Allen's Interval Algebra</b> formally proves that
                 architect certification occurred <i>prior</i> to legal land title ownership transfer, and faculty appointment
                 preceded the mandatory Ph.D. graduation award.
@@ -103,13 +103,13 @@ export default function TimelineDAGPage() {
             </div>
           </div>
         ) : (
-          <div className="p-5 rounded-2xl bg-emerald-950/20 border border-emerald-500/40 flex items-start space-x-4">
-            <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mt-0.5" />
+          <div className="p-5 rounded-lg bg-emerald-50 border border-emerald-200 flex items-start space-x-4">
+            <CheckCircle2 className="w-6 h-6 text-emerald-700 shrink-0 mt-0.5" />
             <div className="space-y-1 text-xs">
-              <h3 className="font-bold text-sm text-emerald-200">
+              <h3 className="font-bold text-sm text-emerald-700">
                 CHRONOLOGICALLY VALID TIMELINE DAG
               </h3>
-              <p className="text-slate-300">
+              <p className="text-slate-700">
                 All statutory sequence constraints adhere strictly to municipal and AICTE legal precedence (Society Reg &le; Land Deed &le; Building Sanction &le; Fire NOC &le; Submission).
               </p>
             </div>
@@ -117,23 +117,23 @@ export default function TimelineDAGPage() {
         )}
 
         {/* Visual Timeline Flowchart DAG */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-8 space-y-6">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-4 text-xs">
-            <span className="font-bold text-white">Chronological Directed Acyclic Graph (DAG)</span>
-            <span className="font-mono text-slate-400">{events.length} Statutory Milestones Evaluated</span>
+        <div className="bg-white/90 border border-slate-200 rounded-lg p-8 space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-200 pb-4 text-xs">
+            <span className="font-bold text-slate-900">Chronological Directed Acyclic Graph (DAG)</span>
+            <span className="font-mono text-slate-600">{events.length} Statutory Milestones Evaluated</span>
           </div>
 
-          <div className="relative space-y-6 before:absolute before:left-6 before:top-3 before:bottom-3 before:w-0.5 before:bg-slate-800">
+          <div className="relative space-y-6 before:absolute before:left-6 before:top-3 before:bottom-3 before:w-0.5 before:bg-slate-100">
             {events.map((evt, idx) => {
               const isFlagged = evt.status === "FLAGGED";
               return (
                 <div key={evt.id} className="relative flex items-start space-x-6 group">
                   {/* Node Circle */}
                   <div
-                    className={`w-12 h-12 rounded-2xl flex items-center justify-center font-mono font-bold text-xs shrink-0 z-10 transition-transform shadow-lg ${
+                    className={`w-12 h-12 rounded-lg flex items-center justify-center font-mono font-bold text-xs shrink-0 z-10 transition-transform shadow-lg ${
                       isFlagged
-                        ? "bg-rose-500/20 text-rose-300 border-2 border-rose-500 shadow-rose-500/10 scale-105"
-                        : "bg-slate-900 text-emerald-400 border-2 border-emerald-500 shadow-emerald-500/10"
+                        ? "bg-red-50 text-red-700 border-2 border-red-300 shadow-none scale-105"
+                        : "bg-white text-emerald-700 border-2 border-emerald-500 shadow-none"
                     }`}
                   >
                     {isFlagged ? "FAIL" : "OK"}
@@ -141,17 +141,17 @@ export default function TimelineDAGPage() {
 
                   {/* Node Body Card */}
                   <div
-                    className={`flex-1 p-5 rounded-2xl border transition-all ${
+                    className={`flex-1 p-5 rounded-lg border transition-all ${
                       isFlagged
-                        ? "bg-rose-950/15 border-rose-500/40 shadow-sm"
-                        : "bg-slate-950/70 border-slate-800 hover:border-slate-700"
+                        ? "bg-red-50 border-red-200 shadow-sm"
+                        : "bg-slate-50/70 border-slate-200 hover:border-slate-300"
                     }`}
                   >
-                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/80 pb-3">
                       <div>
-                        <span className="font-bold text-sm text-white">{evt.name}</span>
-                        <div className="flex items-center space-x-2 text-[11px] text-slate-400 mt-0.5">
-                          <span className="font-mono text-indigo-400 font-semibold">{evt.date}</span>
+                        <span className="font-bold text-sm text-slate-900">{evt.name}</span>
+                        <div className="flex items-center space-x-2 text-[11px] text-slate-600 mt-0.5">
+                          <span className="font-mono text-[#1F3A5F] font-semibold">{evt.date}</span>
                           <span>·</span>
                           <span className="font-mono">{evt.doc}</span>
                         </div>
@@ -160,8 +160,8 @@ export default function TimelineDAGPage() {
                       <span
                         className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
                           isFlagged
-                            ? "bg-rose-500/20 text-rose-300 border border-rose-500/30"
-                            : "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                            ? "bg-red-50 text-red-700 border border-red-200"
+                            : "bg-emerald-50 text-emerald-700 border border-emerald-200"
                         }`}
                       >
                         {evt.status}
@@ -169,7 +169,7 @@ export default function TimelineDAGPage() {
                     </div>
 
                     {evt.anomaly && (
-                      <div className="mt-3 p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-xs text-rose-300 space-y-1">
+                      <div className="mt-3 p-3 rounded-lg bg-red-50 border border-red-200 text-xs text-red-700 space-y-1">
                         <span className="font-bold">Allen Relation Paradox Proof: </span>
                         <div>{evt.anomaly}</div>
                       </div>

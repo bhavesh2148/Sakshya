@@ -63,14 +63,14 @@ export default function AuditLedgerPage() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1">
-            <div className="flex items-center space-x-2 text-indigo-400 text-xs font-bold uppercase tracking-wider">
+            <div className="flex items-center space-x-2 text-[#1F3A5F] text-xs font-bold uppercase tracking-wider">
               <Clock className="w-4 h-4" />
               <span>Event-Sourced Regulatory Audit Trail</span>
             </div>
-            <h1 className="text-3xl font-extrabold text-white tracking-tight">
+            <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
               Legal Audit Ledger & Statutory Notices
             </h1>
-            <p className="text-slate-400 text-sm max-w-2xl leading-relaxed">
+            <p className="text-slate-600 text-sm max-w-2xl leading-relaxed">
               Court-admissible, event-sourced audit log recording every automated verification check, officer override,
               and issued legal notice with cryptographic timestamps.
             </p>
@@ -78,34 +78,34 @@ export default function AuditLedgerPage() {
         </div>
 
         {/* Issued Deficiency Notices */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="bg-white/90 border border-slate-200 rounded-lg p-6 space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-200 pb-3">
             <div>
-              <h3 className="font-extrabold text-base text-white">Issued Statutory Deficiency Notices</h3>
-              <p className="text-xs text-slate-400">Formal legal notices requiring applicant rectification</p>
+              <h3 className="font-extrabold text-base text-slate-900">Issued Statutory Deficiency Notices</h3>
+              <p className="text-xs text-slate-600">Formal legal notices requiring applicant rectification</p>
             </div>
-            <span className="text-xs font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/30">
+            <span className="text-xs font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
               1 Pending Response
             </span>
           </div>
 
           <div className="space-y-3">
             {NOTICES.map((n) => (
-              <div key={n.id} className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-3 text-xs">
-                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-2">
+              <div key={n.id} className="p-5 rounded-lg bg-slate-50 border border-slate-200 space-y-3 text-xs">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-2">
                   <div>
-                    <span className="font-mono text-indigo-400 font-bold">{n.id}</span>
-                    <h4 className="font-bold text-white text-sm mt-0.5">{n.institution}</h4>
+                    <span className="font-mono text-[#1F3A5F] font-bold">{n.id}</span>
+                    <h4 className="font-bold text-slate-900 text-sm mt-0.5">{n.institution}</h4>
                   </div>
                   <div className="text-right">
-                    <span className="text-[11px] text-slate-400 block">Rectification Deadline:</span>
-                    <span className="font-bold text-rose-400 font-mono">{n.deadline}</span>
+                    <span className="text-[11px] text-slate-600 block">Rectification Deadline:</span>
+                    <span className="font-bold text-red-700 font-mono">{n.deadline}</span>
                   </div>
                 </div>
 
-                <div className="space-y-1 text-slate-300">
-                  <span className="font-semibold text-slate-400">Cited Statutory Deficiencies:</span>
-                  <ul className="list-disc list-inside space-y-0.5 text-slate-300">
+                <div className="space-y-1 text-slate-700">
+                  <span className="font-semibold text-slate-600">Cited Statutory Deficiencies:</span>
+                  <ul className="list-disc list-inside space-y-0.5 text-slate-700">
                     {n.deficiencies.map((d, idx) => (
                       <li key={idx}>{d}</li>
                     ))}
@@ -117,31 +117,31 @@ export default function AuditLedgerPage() {
         </div>
 
         {/* Audit Event Timeline */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 space-y-4">
-          <div className="border-b border-slate-800 pb-3">
-            <h3 className="font-extrabold text-base text-white">Immutable Event-Sourced Log</h3>
-            <p className="text-xs text-slate-400">Append-only audit trail capturing all system and human actor events</p>
+        <div className="bg-white/90 border border-slate-200 rounded-lg p-6 space-y-4">
+          <div className="border-b border-slate-200 pb-3">
+            <h3 className="font-extrabold text-base text-slate-900">Immutable Event-Sourced Log</h3>
+            <p className="text-xs text-slate-600">Append-only audit trail capturing all system and human actor events</p>
           </div>
 
           <div className="space-y-3">
             {LOGS.map((log) => (
               <div
                 key={log.id}
-                className="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs hover:border-slate-700 transition"
+                className="p-4 rounded-lg bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs hover:border-slate-300 transition"
               >
                 <div className="space-y-1">
                   <div className="flex items-center space-x-2">
-                    <span className="font-mono text-indigo-400 font-bold">{log.id}</span>
+                    <span className="font-mono text-[#1F3A5F] font-bold">{log.id}</span>
                     <span className="text-slate-500">[{log.timestamp}]</span>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-300">
                       {log.role}
                     </span>
                   </div>
-                  <div className="font-bold text-white text-sm">{log.action}</div>
-                  <div className="text-slate-400">{log.details}</div>
+                  <div className="font-bold text-slate-900 text-sm">{log.action}</div>
+                  <div className="text-slate-600">{log.details}</div>
                 </div>
 
-                <div className="font-mono text-[11px] text-indigo-300 bg-indigo-500/10 px-3 py-1.5 rounded-xl border border-indigo-500/20 shrink-0">
+                <div className="font-mono text-[11px] text-[#1F3A5F] bg-[#1F3A5F]/10 px-3 py-1.5 rounded-lg border border-[#1F3A5F]/30 shrink-0">
                   {log.target_entity}
                 </div>
               </div>
